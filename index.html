@@ -36,6 +36,98 @@
    </p>
    </body>
 </html>
-   
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Блог: Шифры Цезаря</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Текущая дата -->
+    <p><strong>Дата:</strong> 19 января 2026 г.</p>
+
+    <h1>Решение шифров Цезаря</h1>
+
+    <h2>1. Определение ключа шифра Цезаря</h2>
+
+    <h3>а. АПЕЛЬСИН → САЦЬНВЩЮ</h3>
+    <p>Ключ: <strong>2</strong></p>
+    <p>Обоснование: Каждая буква сдвинута на +2 позиции в алфавите (с учётом кириллицы без «Ё»).</p>
+
+    <h3>б. АБРИКОС → ЫЬЛГЕЙМ</h3>
+    <p>Ключ: <strong>30</strong> (или эквивалентно -2)</p>
+    <p>Обоснование: Каждая буква сдвинута на -2 позиции (или +30 при модуле 32).</p>
+
+    <h2>2. Расшифровка сообщений</h2>
+
+    <h3>а. ФХНЗКЧ</h3>
+    <p>Расшифровано: <strong>ШИФРЫ</strong></p>
+    <p>Ключ: <strong>26</strong> (или -6)</p>
+
+    <h3>б. ЦЩЕБФ</h3>
+    <p>Расшифровано: <strong>ТЕСТЫ</strong></p>
+    <p>Ключ: <strong>26</strong> (или -6)</p>
+
+    <h2>3. Шифрование фамилии</h2>
+    <p>Фамилия: <strong>АНДРИЯНОВА</strong></p>
+    <p>Ключ: <strong>10</strong></p>
+    <p>Зашифровано: <strong>КЧНБОТЩЧЖК</strong></p>
+
+    <h2>Приложение: Код для GitHub (Python)</h2>
+    <pre>
+# caesar_cipher.py
+
+def caesar_cipher(text, shift, decrypt=False):
+    alphabet = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
+    result = ''
+    shift = shift % len(alphabet)
+    if decrypt:
+        shift = -shift
+    for char in text.upper():
+        if char in alphabet:
+            idx = (alphabet.index(char) + shift) % len(alphabet)
+            result += alphabet[idx]
+        else:
+            result += char
+    return result
+
+# Примеры использования:
+
+# 1. Найти ключ по паре открытый/шифротекст
+def find_key(plain, cipher):
+    alphabet = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ'
+    p0 = alphabet.index(plain[0])
+    c0 = alphabet.index(cipher[0])
+    return (c0 - p0) % len(alphabet)
+
+print("Ключ для АПЕЛЬСИН → САЦЬНВЩЮ:", find_key("АПЕЛЬСИН", "САЦЬНВЩЮ"))
+print("Ключ для АБРИКОС → ЫЬЛГЕЙМ:", find_key("АБРИКОС", "ЫЬЛГЕЙМ"))
+
+# 2. Расшифровка
+print("ФХНЗКЧ расшифровано:", caesar_cipher("ФХНЗКЧ", 26, decrypt=True))
+print("ЦЩЕБФ расшифровано:", caesar_cipher("ЦЩЕБФ", 26, decrypt=True))
+
+# 3. Шифрование фамилии
+surname = "АНДРИЯНОВА"
+encrypted = caesar_cipher(surname, 10)
+print(f"Фамилия '{surname}' зашифрована как: {encrypted}")
+    </pre>
+</body>
+</html>   
    
 
