@@ -335,16 +335,35 @@ print(f"Фамилия '{surname}' зашифрована как: {encrypted}")
  <p style="font-weight: bold; font-size: 1.2em; margin-bottom: 10px;">
             14 февраля , 2026
         </p>
-    <body>
-        <p style="font-weight: normal; line-height: 1.5;">
-            Топ-3 предсказаний:<br><br>
-            running shoe: 99.45%<br>
-            shoe store: 0.27%<br>
-            clogs: 0.15%
-        </p>
+body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .date {
+            font-weight: bold; /* Делает шрифт жирным */
+            font-size: 1.2em;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .list {
+            font-weight: normal; /* Обычный шрифт */
+            line-height: 1.6;
+            white-space: pre-line; /* Сохраняет переносы строк как в коде */
+        }
+    </style>
+</head>
+<body>
+    <!-- Жирная дата -->
+    <span class="date">14 февраля , 2026</span>
+    <!-- Список предсказаний обычным шрифтом -->
+    <div class="list">
+Топ-3 предсказаний:
+
+running shoe: 99.45%
+
+shoe store: 0.27%
+
+clogs: 0.15%
     </div>
 </body>
-</html>    
-  </script>
-</body>
-</html>
+</html>   
